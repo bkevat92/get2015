@@ -1,4 +1,3 @@
--- Display Name of member whose name is largest in character
-SELECT member_nm , length(member_nm)
-FROM members 
-WHERE length( member_nm ) = (SELECT MAX(length(member_nm)) FROM members);
+-- Display count of number of books issued so far
+SELECT COUNT(*) AS "Count of books issued so far"
+FROM book_issue;
