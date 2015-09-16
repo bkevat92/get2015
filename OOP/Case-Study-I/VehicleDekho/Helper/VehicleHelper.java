@@ -1,5 +1,8 @@
+/*
+ * this class create vehicle
+ * @authoe Bnanwari kevat
+ */
 package Helper;
-
 import Model.Bike;
 import Model.Car;
 import Model.Vehicle;
@@ -18,7 +21,7 @@ public class VehicleHelper {
 			return createBike(model, make);
         }
 	}
-
+        //creation of car
 	private static Vehicle createCar(String model, String make) {
 		Vehicle vehicle = new Car();
 		vehicle.setEnginInCC(500);
@@ -35,7 +38,8 @@ public class VehicleHelper {
 		return vehicle;
 
 	}
-
+        
+        //creation of bike
 	private static Vehicle createBike(String model, String make) {
 		Vehicle vehicle = new Bike();
 		vehicle.setEnginInCC(500);
