@@ -8,7 +8,7 @@ function fillcolor() {
         var lower = document.getElementById("inputtableTd" + (i + 1) + "2").value;
         var upper = document.getElementById("inputtableTd" + (i + 1) + "3").value;
 
-        for (var j = lower; j <= upper + 1; j++) {
+        for (var j = lower; j <= upper; j++) {
             var jj = Number(j) + 2;
             var id = "outputtableTd" + i + jj;
             document.getElementById(id).style.backgroundColor = "red";
