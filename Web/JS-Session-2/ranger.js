@@ -1,5 +1,4 @@
 var row;
-Number(document.getElementById("rowinput").value);
 
 function fillcolor() {
     for (var i = 1; i <= row; i++) {
