@@ -13,16 +13,15 @@ public class TestAnnotationParser {
 	public void parse(Class<?> tempClass) throws Exception {
 
 		Method[] methods = tempClass.getMethods();
-
-		for (Method method : methods) {
-
+        for (Method method : methods) 
+        {
 			if (method.isAnnotationPresent(RequestForEnhancement.class)) {
 				RequestForEnhancement test = method.getAnnotation(RequestForEnhancement.class);
-				int info = test.id();
-				String synopsis = test.synopsis();
-				System.out.println("annotation is awesome!");
+				//int info = test.id();
+				//String synopsis = test.synopsis();
+				System.out.println("Annotation is being process...");
 				// try to invoke the method with param
-				method.invoke(Employee.class.newInstance(), info, synopsis,test.engineer(), test.date());
+				method.invoke(Employee.class.newInstance(),  test.id(), test.synopsis(),test.engineer(), test.date());
 
 			}
 
