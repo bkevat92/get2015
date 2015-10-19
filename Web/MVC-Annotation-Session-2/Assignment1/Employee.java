@@ -13,8 +13,7 @@ public class Employee {
 	@RequestForEnhancement(id = 1, synopsis = "Banwari")
 	public static void employeeDetail(int id, String synopsis, String engineer,String date)
 	{
-		System.out.println("Hii " + id + "->" + synopsis + "->" + engineer
-				+ "->" + date);
+		System.out.println("Hello " + id + " " + synopsis + " " + engineer+ " " + date);
 	}
 
 	/*
@@ -23,16 +22,17 @@ public class Employee {
 	 * @param engineer string variable taken by annotation
 	 * @param date string variable taken by annotation
 	 */
-	@RequestForEnhancement(id = 1, synopsis = "Banwari", engineer = "mechnical", date = "13/10/2015")
+	@RequestForEnhancement(id = 2, synopsis = "Banwari", engineer = "mechnical", date = "13/10/2015")
 	public static void employeeDetails(int id, String synopsis,
-			String engineer, String date) {
-		System.out.println("Hii" +" "+ id + "->" + synopsis + "->" + engineer
-				+ "->" + date);
+			String engineer, String date) 
+	{
+		System.out.println("Hello" +" "+ id + " " + synopsis + " " + engineer+ " " + date);
 	}
 
     // Function not using annotation
-	public static void employeeDetail() {
-		System.out.println("Not Annotation");
+	public static void employeeDetail() 
+	{
+		System.out.println("Annotation not present in this method");
 	}
 
 }
