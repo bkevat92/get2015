@@ -11,10 +11,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface RequestForEnhancement {
 	int id();
-
-	String synopsis();
-
-	String engineer() default "[unassigned]";
-
-	String date() default "[unknown]";
+    String synopsis();
+    String engineer() default "default";
+    String date() default "default";
 }
