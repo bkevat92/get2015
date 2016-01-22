@@ -1,0 +1,28 @@
+<apex:page standardcontroller="Class__c" extensions="ClassManageController">
+    <apex:form >
+        <apex:pageBlock id="refresh" title="Class Management System">
+            <apex:pageBlockTable value="{!Records}" var="classDetail">
+                <apex:column headerValue="Name" value="{!classDetail.Name}"/>
+                <apex:column headerValue="Fee" value="{!classDetail.Fee__c}"/>
+                <apex:column headerValue="Board" value="{!classDetail.Board__c}"/>
+                <apex:column >
+                    <apex:commandLink value="Edit" action="{!getFieldToEdit}" rerender="toEdit">
+                        <apex:param name="idOfActionRecord" value="{!classDetail.id}" assignTo="{!idOfActionRecord}"/>
+                    </apex:commandLink>
+                     &nbsp;&nbsp;&nbsp;
+                     <apex:commandLink value="Delete" action="{!deleteRecord}" rerender="refresh">
+                        <apex:param name="idOfActionRecord" value="{!classDetail.id}" assignTo="{!idOfActionRecord}"/>
+                        </apex:commandLink>
+                </apex:column>
+            </apex:pageBlockTable>
+            <apex:outputPanel id="toEdit">
+                <apex:outputPanel layout="block" rendered="{!isEditor}">
+                    Class Name: <apex:inputField value="{!actionRecord.Name}"  />
+                    Fees amount: <apex:inputField value="{!actionRecord.Fee__c}" />
+                    Class board<apex:inputField value="{!actionRecord.Board__c}" />
+                    <apex:commandButton value="saveChanges" action="{!saveChanges}" rerender="refresh"/>
+                </apex:outputPanel>
+            </apex:outputPanel>
+        </apex:pageBlock>
+    </apex:form>  
+</apex:page>
