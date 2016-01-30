@@ -1,0 +1,19 @@
+<apex:page controller="AccountFilter1Controller">
+       <apex:pageBlock >
+           <apex:form >
+                <apex:pageBlockSection >
+                   <apex:pageBlockSectionItem >Billing City <apex:inputText value="{!billingCity}" id="billingCity"/></apex:pageBlockSectionItem>
+                   <apex:pageBlockSectionItem >Billing State <apex:inputText value="{!billingState}" id="billingState"/></apex:pageBlockSectionItem>
+                   <apex:pageBlockSectionItem >Billing Country <apex:inputText value="{!billingCountry}" id="billingCountry"/></apex:pageBlockSectionItem>
+                </apex:pageBlockSection>
+           <apex:commandButton value="Search" action="{!getFilteredAccounts}"/>
+               </apex:form> 
+    </apex:pageBlock>  
+    <apex:pageBlock >
+        <apex:pageBlockSection collapsible="false">
+            <apex:pageBlockTable value="{!accountList}" var="acc">
+                <apex:column value="{!acc.Name}"/>
+            </apex:pageBlockTable>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+</apex:page>
