@@ -1,0 +1,30 @@
+<apex:page controller="Pagination_min">
+    <apex:form >
+       <apex:pageBlock title="Enter following Details" >
+                <apex:pageBlockSection >
+                   <apex:pageBlockSectionItem >Billing City <apex:inputText value="{!billingCity}" id="billingCity"/></apex:pageBlockSectionItem>
+                   <apex:pageBlockSectionItem >Billing State <apex:inputText value="{!billingState}" id="billingState"/></apex:pageBlockSectionItem>
+                   <apex:pageBlockSectionItem >Billing Country <apex:inputText value="{!billingCountry}" id="billingCountry"/></apex:pageBlockSectionItem>
+                </apex:pageBlockSection>
+           <apex:commandButton value="Search" action="{!search}"/>
+    </apex:pageBlock>  
+        <apex:pageBlock id="pb" title="Search Results">
+           <apex:outputPanel rendered="{!IF(Accounts!=null, true, false)}">
+            <apex:pageBlockTable value="{!Accounts}" var="a">
+                <apex:column value="{!a.Name}"/>
+                <apex:column value="{!a.Id}"/>
+            </apex:pageBlockTable>
+            <apex:panelGrid columns="7">
+                <apex:commandButton status="fetchStatus" reRender="pb" value="First" action="{!setCon.first}" disabled="{!!setCon.hasPrevious}" title="First Page"/>
+                <apex:commandButton status="fetchStatus" reRender="pb" value="Previous" action="{!setCon.previous}" disabled="{!!setCon.hasPrevious}" title="Previous Page"/>
+                <apex:commandButton status="fetchStatus" reRender="pb" value="Next" action="{!setCon.next}" disabled="{!!setCon.hasNext}" title="Next Page"/>
+                <apex:commandButton status="fetchStatus" reRender="pb" value="Last" action="{!setCon.last}" disabled="{!!setCon.hasNext}" title="Last Page"/>
+                <apex:outputText >{!(setCon.pageNumber * size)+1-size}-{!IF((setCon.pageNumber * size)>noOfRecords, noOfRecords,(setCon.pageNumber * size))} of {!noOfRecords}</apex:outputText>
+                <apex:outputPanel style="color:#4AA02C;font-weight:bold">
+                <apex:actionStatus id="fetchStatus" startText="Fetching..." stopText=""/>
+                </apex:outputPanel>
+            </apex:panelGrid>
+            </apex:outputPanel>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,17 @@
+<apex:page standardController="Student__c" renderAs="pdf">
+ <apex:form >
+    <apex:pageBlock >
+          <apex:pageBlockSection >
+             Name          :  {!Student__c.Name}<br/>
+             First Name    :  {!Student__c.First_Name__c}<br/>
+             Last Name     :  {!Student__c.Last_Name__c}<br/>
+             Date Of Birth :  {!Student__c.DOB__c}<br/>
+             Email         :  {!Student__c.Email__c}<br/>
+             Married Status:  {!Student__c.Married__c}<br/>
+             Sex           :  {!Student__c.Sex__c}<br/>
+              
+        
+
+          </apex:pageBlockSection>
+       </apex:pageBlock></apex:form>
+</apex:page>
