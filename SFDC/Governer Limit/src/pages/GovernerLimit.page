@@ -1,0 +1,10 @@
+<apex:page standardController="Account" extensions="GovernerLimitController">
+    <apex:pageBlock >
+        <apex:form >
+        <apex:dataTable value="{!accList}" var="acc">
+            <apex:column value="{!acc.id}" />
+            <apex:column value="{!acc.Name}" />
+        </apex:dataTable>
+        <apex:commandButton value="Update" action="{!updateFunction}"/>
+  </apex:form>  </apex:pageBlock>
+</apex:page>
