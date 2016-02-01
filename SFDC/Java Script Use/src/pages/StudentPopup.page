@@ -1,0 +1,25 @@
+<apex:page standardController="Student__c" sidebar="false" showHeader="false">
+    <script src="/soap/ajax/11.0/connection.js"></script>
+	<script src="/soap/ajax/11.0/apex.js"></script>
+    <script type = "text/javascript">
+    window.onload = function() {
+        try{
+        var name = '{!Student__c.Last_Name__c}';
+        var class1 = '{!Student__c.Class__r.Name}';
+        document.getElementById('{!$Component.PB.PBS.PBSI.name}').innerText= name;
+        document.getElementById('{!$Component.PB.PBS.PBSI.class1}').innerText= class1;
+            alert(class1);
+            }catch(error){
+                alert(error.faultstring);}
+          
+    }  ;      
+    </script>
+    <apex:pageBlock id="PB">
+        <apex:pageBlockSection id="PBS">
+            <apex:pageBlockSectionItem id="PBSI">
+                <apex:outputText id="name" />
+                <apex:outputText id="class1" />
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+</apex:page>
