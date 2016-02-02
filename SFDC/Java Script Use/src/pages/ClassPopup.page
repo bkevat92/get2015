@@ -1,0 +1,30 @@
+<apex:page standardController="Class__c">
+   <script src="/soap/ajax/11.0/connection.js"></script>
+   <script src="/soap/ajax/11.0/apex.js"></script>
+   <script type = "text/javascript">
+      function save(){  
+           try{
+               sforce.connection.sessionId = "{!$Api.Session_ID}";
+               var t = new sforce.SObject("Class__c"); 
+               var s = new sforce.SObject("Student__c"); 
+               var nameOfStudent = document.getElementById('{!$Component.apform.block1.block2.name}').value;
+               s.Class__c = '{!Class__c.ID}';
+               s.Last_Name__c = nameOfStudent;
+               var result = sforce.connection.create([s]);
+               alert(result);
+           }
+      catch(error) {
+               alert(error.faultstring);
+           }
+     	};
+</script>
+       <apex:form id="apform">
+           <apex:pageBlock id="block1">
+               <apex:pageBlockSection id="block2">
+                   <apex:inputText id="name" />
+               </apex:pageBlockSection>
+               <apex:commandButton value="Create Student" onclick="save()" />
+           </apex:pageBlock>
+       </apex:form>
+ 
+</apex:page>
