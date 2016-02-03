@@ -1,0 +1,37 @@
+<apex:page standardController="Student__c" recordSetVar="students" extensions="DeleteStudentsController" >
+    <script src="/soap/ajax/11.0/connection.js"></script>
+    <script src="/soap/ajax/11.0/apex.js"></script>
+    <script type = "text/javascript">
+    window.onload = function(){
+        var size = '{!size}';
+        if(size < 1) 
+        {    //document.getElementById('{!$Component.showmsg}').innerText="no record marked to delete";
+              errormsg();
+            //window.history.back();
+        }
+       
+    }
+    function cancel(){  
+        try{ 
+            var ids = {!GETRECORDIDS($ObjectType.Event)};
+            
+        }catch(error){alert(error.faultstring);}
+        window.history.back();
+    };
+    </script>
+    <apex:pageMessages id="showmsg"></apex:pageMessages>
+    <apex:form >
+        <apex:actionFunction name="errormsg" action="{!showMessage}" reRender="showmsg"/>
+        <apex:pageBlock >
+            <apex:pageBlockSection >
+                <apex:dataTable value="{!studentList}" var="std">
+                    <apex:column value="{!std.Id}" headerValue="ID" />
+                    <apex:column value="{!std.Name}" headerValue="Name" />
+                    <apex:column value="{!std.Class__c}" headerValue="Class" />
+                </apex:dataTable>
+                <apex:commandButton value="Delete" action="{!deleteAll}" oncomplete="cancel()" />
+                <apex:commandButton value="Cancel" onclick="cancel()" />
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

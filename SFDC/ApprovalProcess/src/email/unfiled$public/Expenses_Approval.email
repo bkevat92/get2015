@@ -1,0 +1,3 @@
+Hii {!Expenses__c.OwnerEmail}, 
+  Your Expense Approval status is .{!Expenses__c.Status__c}.
+Thanks
