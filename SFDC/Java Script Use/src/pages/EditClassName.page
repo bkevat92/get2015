@@ -1,0 +1,30 @@
+<apex:page standardController="Class__c" showHeader="false" sidebar="false">
+    <script src="/soap/ajax/11.0/connection.js"></script>
+	<script src="/soap/ajax/11.0/apex.js"></script>
+    <script type = "text/javascript">
+    window.onload=function(){
+        sforce.connection.sessionId = "{!$Api.Session_ID}";
+        document.getElementById('{!$Component.appForm.block1.block2.Name}').value = '{!Class__c.Name}'; 
+    }
+        function save(){   
+            try {
+                var id1 ='{!Class__c.ID}';
+                var opp = new sforce.SObject("Class__c"); 
+               	opp.Id = '{!Class__c}';
+                opp.Name=document.getElementById('{!$Component.appForm.block1.block2.Name}').value;
+                sforce.connection.upsert("Id", [opp]);
+			}
+            catch(error){
+                alert(error.faultstring);
+            }
+		};
+	</script>
+    <apex:form id="appForm">
+    	<apex:pageBlock id="block1">
+        	<apex:pageBlockSection id="block2">
+                <apex:inputText id="Name"></apex:inputText>
+                <apex:commandButton value="save" onclick="save()" />
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
